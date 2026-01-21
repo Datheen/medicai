@@ -1,11 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 import { Navigation } from "../../components/navigation/navigation";
 import { Table } from "../../components/table/table";
 import { Card } from "../../components/card/card";
 
 import { MedicamentosService } from "../../services/apioutput";
+import { SearchService } from "../../services/search";
 
 @Component({
   selector: 'app-home',
@@ -14,10 +16,12 @@ import { MedicamentosService } from "../../services/apioutput";
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
+export class Home implements OnInit, OnDestroy {
   medicamentos: any[] = [];
+  medicamentosFiltrados: any[] = [];
   loading: boolean = true;
   error: string = '';
+  private searchSubscription?: Subscription;
 
   // Estatísticas do estoque
   totalMedicamentos: number = 0;
@@ -26,16 +30,24 @@ export class Home implements OnInit {
   medicamentosBaixoEstoque: number = 0;
   taxaDisponibilidade: number = 0;
 
-  constructor(
-    private medsService: MedicamentosService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  private medsService = inject(MedicamentosService);
+  private searchService = inject(SearchService);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
-    // Pequeno delay para garantir que o componente está totalmente inicializado
     setTimeout(() => {
       this.carregarMedicamentos();
     }, 0);
+
+    this.searchSubscription = this.searchService.searchTerm$.subscribe((term: string) => {
+      this.filtrarMedicamentos(term);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
+    }
   }
 
   carregarMedicamentos(): void {
@@ -47,6 +59,7 @@ export class Home implements OnInit {
       next: (data) => {
         console.log('Dados recebidos:', data);
         this.medicamentos = data;
+        this.medicamentosFiltrados = data;
         this.calcularEstatisticas();
         this.loading = false;
         
@@ -54,7 +67,6 @@ export class Home implements OnInit {
           this.error = 'Nenhum medicamento encontrado';
         }
         
-        // Força a detecção de mudanças
         this.cdr.markForCheck();
       },
       error: (error) => {
@@ -64,6 +76,21 @@ export class Home implements OnInit {
         this.cdr.markForCheck();
       }
     });
+  }
+
+  filtrarMedicamentos(termo: string): void {
+    if (!termo || termo.trim() === '') {
+      this.medicamentosFiltrados = this.medicamentos;
+    } else {
+      const termoBusca = termo.toLowerCase();
+      this.medicamentosFiltrados = this.medicamentos.filter(med => 
+        med.id.toLowerCase().includes(termoBusca) ||
+        med.nome.toLowerCase().includes(termoBusca) ||
+        med.descricao.toLowerCase().includes(termoBusca) ||
+        med.quantidade.toLowerCase().includes(termoBusca)
+      );
+    }
+    this.cdr.markForCheck();
   }
 
   calcularEstatisticas(): void {

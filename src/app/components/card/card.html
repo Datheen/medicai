@@ -1,7 +1,7 @@
 <div class="card-container" [ngClass]="'card-' + color">
   <div class="card-content">
-    <div class="card-icon" [ngClass]="'icon-' + color">
-      <span class="icon-text">{{ icon }}</span>
+    <div class="card-icon" [ngClass]="'icon-'">
+      <img [src]="icon" [alt]="title" class="icon-image" />
     </div>
     <div class="card-info">
       <h1 class="card-value">{{ value }}</h1>

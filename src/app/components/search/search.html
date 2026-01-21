@@ -1,7 +1,7 @@
 
 <div class="navbar bg-base-100 shadow-sm">
   <div class="flex-1">
-    <label for="my-drawer-4" aria-label="open sidebar" class="btn btn-square btn-ghost md:hidden">
+    <label for="my-drawer-4" aria-label="open sidebar" class="btn z-10 btn-square btn-ghost md:hidden">
        <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -12,10 +12,10 @@
               <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
             </svg>
     </label>
-    <a class="btn btn-ghost text-xl">💊Medic <span class="text-ocean">AI</span></a>
+    <a class="btn btn-ghost text-xl"><img class="h-[28px]" src="/img/logo.webp" alt="Logo">Medic <span class="text-ocean">GO</span></a>
   </div>
   <div class="flex gap-2 md:px-6">
-    <input type="text" placeholder="Pesquisar produto" class="input input-bordered- w-35 rounded-4xl md:w-auto" />
+    <input id="search" type="text" placeholder="Pesquisar produto" class="input input-bordered- w-35 rounded-4xl md:w-auto" (input)="onSearchChange($event)" />
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">

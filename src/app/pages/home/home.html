@@ -5,7 +5,7 @@
   <app-card 
     title="Total de Medicamentos" 
     [value]="totalMedicamentos.toString()" 
-    icon="💊" 
+    icon="/img/UI/card/icon-1.webp" 
     color="blue"
     [percentage]="100">
   </app-card>
@@ -13,7 +13,7 @@
   <app-card 
     title="Disponibilidade Geral" 
     [value]="taxaDisponibilidade + '%'" 
-    icon="📊" 
+    icon="/img/UI/card/icon-2.webp" 
     color="green"
     [percentage]="taxaDisponibilidade">
   </app-card>
@@ -21,7 +21,7 @@
   <app-card 
     title="Estoque Atual / Total" 
     [value]="estoqueAtual + '/' + estoqueTotal" 
-    icon="📦" 
+    icon="/img/UI/card/icon-3.webp" 
     color="purple"
     [percentage]="taxaDisponibilidade">
   </app-card>
@@ -29,13 +29,13 @@
   <app-card 
     title="Baixo Estoque" 
     [value]="medicamentosBaixoEstoque.toString()" 
-    icon="⚠️" 
+    icon="/img/UI/card/icon-4.webp" 
     color="red"
     [percentage]="medicamentosBaixoEstoque > 0 ? (medicamentosBaixoEstoque / totalMedicamentos * 100) : 0">
   </app-card>
 </div>
 
-<app-table [data]="medicamentos"></app-table>
+<app-table [data]="medicamentosFiltrados"></app-table>
 
 <!-- Em progresso... -->
 

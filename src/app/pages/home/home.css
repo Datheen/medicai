@@ -139,11 +139,6 @@
   font-weight: 600;
   text-align: center;
   min-width: 70px;
-  transition: transform 0.2s ease;
-}
-
-.badge:hover {
-  transform: scale(1.05);
 }
 
 .badge-green {

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SearchService } from '../../services/search';
 
 @Component({
   selector: 'app-search',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './search.css',
 })
 export class Search {
+  private searchService = inject(SearchService);
 
+  onSearchChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchService.updateSearchTerm(input.value);
+  }
 }
