@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './table.html',
   styleUrl: './table.css',
 })
 export class Table {
-
+  // 👇 isso é o "props" do React
+  @Input() data: any[] = [];
 }
