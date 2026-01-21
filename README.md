@@ -1,4 +1,4 @@
-# 💊 Medical GO
+# 💊 Medic GO
 
 O **Medical Go** é uma aplicação web desenvolvida para **gestão e pesquisa inteligente de medicamentos**, com foco em organização, desempenho e arquitetura reativa pensado diretamente para um sistema dinâmico para estoques de drogarias e farmácias.  
 
