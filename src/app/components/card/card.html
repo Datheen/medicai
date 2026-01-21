@@ -1,8 +1,16 @@
-<div class="flex my-5 shadow-sm shadow-white/5 w-[311px] h-[157px] bg-zinc-800/80 rounded-2xl">
-  <div class="w-40 pl-5 pb-5 flex flex-col justify-center items-start">
-    <h1 class="text-[52px] font-bold text-white">70%</h1>
-    <p class="text-[16px] font-light text-white">Disponibilidade de produtos</p>
+<div class="card-container" [ngClass]="'card-' + color">
+  <div class="card-content">
+    <div class="card-icon" [ngClass]="'icon-' + color">
+      <span class="icon-text">{{ icon }}</span>
+    </div>
+    <div class="card-info">
+      <h1 class="card-value">{{ value }}</h1>
+      <p class="card-title">{{ title }}</p>
+    </div>
   </div>
-
-  <div><app-progress /></div>
+  <div class="card-footer" *ngIf="percentage !== undefined">
+    <div class="progress-bar">
+      <div class="progress-fill" [ngClass]="'progress-' + color" [style.width.%]="percentage"></div>
+    </div>
+  </div>
 </div>

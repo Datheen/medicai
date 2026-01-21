@@ -1,6 +1,41 @@
 <app-navigation/>
-<div class="flex gap-9 overflow-x-auto overflow-y-hidden"><app-card/><app-card/><app-card/></div>
-<app-table  [data]="medicamentos"></app-table>
+
+<!-- Cards de Estatísticas -->
+<div class="cards-container" *ngIf="!loading">
+  <app-card 
+    title="Total de Medicamentos" 
+    [value]="totalMedicamentos.toString()" 
+    icon="💊" 
+    color="blue"
+    [percentage]="100">
+  </app-card>
+  
+  <app-card 
+    title="Disponibilidade Geral" 
+    [value]="taxaDisponibilidade + '%'" 
+    icon="📊" 
+    color="green"
+    [percentage]="taxaDisponibilidade">
+  </app-card>
+  
+  <app-card 
+    title="Estoque Atual / Total" 
+    [value]="estoqueAtual + '/' + estoqueTotal" 
+    icon="📦" 
+    color="purple"
+    [percentage]="taxaDisponibilidade">
+  </app-card>
+  
+  <app-card 
+    title="Baixo Estoque" 
+    [value]="medicamentosBaixoEstoque.toString()" 
+    icon="⚠️" 
+    color="red"
+    [percentage]="medicamentosBaixoEstoque > 0 ? (medicamentosBaixoEstoque / totalMedicamentos * 100) : 0">
+  </app-card>
+</div>
+
+<app-table [data]="medicamentos"></app-table>
 
 <!-- Em progresso... -->
 

@@ -10,16 +10,16 @@
       </tr>
     </thead>
     <tbody>
-      <!-- row 1 -->
+      <!-- Itens -->
       <tr class="bg-base-200" *ngFor="let m of data">
         <th>{{m.id}}</th>
         <td>{{m.nome}}</td>
         <td class="font-medium">{{m.descricao}}<a class="font-light underline pl-2 text-ocean" href="https://google.com">Ver mais</a></td>
-        <td>{{m.quantidade}}</td>
+        <td>
+          <span class="badge" [ngClass]="getBadgeClass(m.quantidade)">{{m.quantidade}}</span>
+        </td>
       </tr>
-      <!-- row 2 -->
-     
-      <!-- row 3 -->
+      
      
     </tbody>
   </table>

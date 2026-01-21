@@ -1,0 +1,143 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 311px;
+  height: 157px;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.icon-text {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.card-value {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
+.card-footer {
+  margin-top: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+/* Color Variants */
+.card-blue {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.icon-blue {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.progress-blue {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+.card-green {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.icon-green {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.progress-green {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+.card-red {
+  background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+}
+
+.icon-red {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.progress-red {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+.card-orange {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.icon-orange {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.progress-orange {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+.card-purple {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.icon-purple {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.progress-purple {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+}
